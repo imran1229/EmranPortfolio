@@ -313,7 +313,7 @@ const AI_FILM_PROJECTS = [
     description: "A cinematic AI-generated story involving a man, horse and dragon.",
     duration: "~30 seconds",
     // Add the final hosted MP4 or viewing URL here when available.
-    videoUrl: "",
+    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/hf_20260804_141711_aaca1daa-a321-4594-8093-aae1a510d780.mp4",
     posterUrl: "",
   },
   {
