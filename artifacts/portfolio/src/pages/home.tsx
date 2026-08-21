@@ -9,7 +9,7 @@ import {
   useTransform,
   useVelocity,
 } from "framer-motion";
-import { ArrowRight, ExternalLink, Menu, Play, X } from "lucide-react";
+import { ArrowRight, ExternalLink, Film, Menu, Play, Sparkles, X } from "lucide-react";
 import Lenis from "lenis";
 
 // ─── PAGE LOADER — curtain wipes up revealing the hero ───────────────────────
@@ -198,6 +198,104 @@ function WorkCard({ title, url, label, layout, aspect, delay = 0 }: {
   );
 }
 
+
+// ─── AI FILMMAKING CARD ─────────────────────────────────────────────────────
+function AiFilmCard({ title, description, duration, videoUrl, posterUrl, delay = 0 }: {
+  title: string; description: string; duration: string; videoUrl?: string; posterUrl?: string; delay?: number;
+}) {
+  const isReady = Boolean(videoUrl);
+
+  const cardContent = (
+    <>
+      <div className="absolute inset-0 z-0">
+        {posterUrl ? (
+          <img
+            src={posterUrl}
+            alt=""
+            loading="lazy"
+            className="h-full w-full object-cover opacity-70 grayscale transition-all duration-700 group-hover:scale-105 group-hover:opacity-90 group-hover:grayscale-0"
+          />
+        ) : (
+          <div
+            className="h-full w-full transition-transform duration-700 group-hover:scale-105"
+            style={{
+              background:
+                "radial-gradient(circle at 26% 24%, rgba(245,158,11,0.28), transparent 30%), radial-gradient(circle at 78% 18%, rgba(245,245,242,0.12), transparent 24%), linear-gradient(135deg, #151515 0%, #09090B 54%, #1A1206 100%)",
+            }}
+          />
+        )}
+        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(9,9,11,0.96), rgba(9,9,11,0.18) 58%, rgba(9,9,11,0.58))" }} />
+        <div className="absolute inset-x-0 top-0 h-px opacity-50" style={{ background: "linear-gradient(to right, transparent, rgba(245,158,11,0.8), transparent)" }} />
+      </div>
+
+      <div
+        className="absolute inset-0 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out z-20 flex items-center justify-center"
+        style={{ backgroundColor: isReady ? "rgba(245,158,11,0.95)" : "rgba(245,245,242,0.92)" }}
+      >
+        <span className="font-display text-2xl md:text-3xl uppercase font-bold text-black flex items-center gap-3 text-center px-6">
+          {isReady ? "Watch Film" : "Video Coming Soon"} {isReady ? <ArrowRight size={26} /> : <Film size={24} />}
+        </span>
+      </div>
+
+      <div className="relative z-10 flex h-full flex-col justify-between p-5 md:p-6">
+        <div className="flex items-start justify-between gap-4">
+          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.25em]" style={{ color: "rgba(245,245,242,0.62)" }}>
+            <Sparkles size={14} style={{ color: "#F59E0B" }} />
+            AI Film
+          </div>
+          <span className="border px-2 py-1 text-[10px] font-mono uppercase tracking-[0.18em]" style={{ borderColor: "rgba(245,245,242,0.12)", color: "rgba(245,245,242,0.64)" }}>
+            {duration}
+          </span>
+        </div>
+
+        <div>
+          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border transition-transform duration-500 group-hover:scale-110" style={{ borderColor: "rgba(245,245,242,0.18)", backgroundColor: "rgba(245,245,242,0.04)" }}>
+            <Play size={20} fill="rgba(245,245,242,0.86)" style={{ color: "rgba(245,245,242,0.86)", marginLeft: 2 }} />
+          </div>
+          <h4 className="font-display text-3xl md:text-4xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>{title}</h4>
+          <p className="mt-4 max-w-md text-sm leading-relaxed" style={{ color: "rgba(245,245,242,0.72)" }}>{description}</p>
+        </div>
+      </div>
+    </>
+  );
+
+  const sharedClassName = "group relative col-span-12 min-h-[420px] overflow-hidden border text-left md:col-span-4";
+  const sharedStyle = { backgroundColor: "#0F0F0F", borderColor: "rgba(245,245,242,0.07)" };
+
+  if (isReady) {
+    return (
+      <motion.a
+        href={videoUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-30px" }}
+        transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+        className={sharedClassName}
+        style={sharedStyle}
+        aria-label={`Watch ${title}`}
+      >
+        {cardContent}
+      </motion.a>
+    );
+  }
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-30px" }}
+      transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={sharedClassName}
+      style={sharedStyle}
+      aria-label={`${title} video placeholder`}
+    >
+      {cardContent}
+    </motion.article>
+  );
+}
+
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
 const TICKER_TOP = ["Graphic Design", "·", "Brand Identity", "·", "Video Editing", "·"];
 const TICKER_BTM = ["Motion Graphics", "·", "Social Content", "·", "Visual Storytelling", "·"];
@@ -206,6 +304,34 @@ const FAST_EDITS = [
   { title: "Fast-Paced Edit",  url: "https://f.io/TqsxIJMa",    layout: "col-span-12 md:col-span-7", aspect: "aspect-video",  label: "Fast Edit" },
   { title: "Cinematic Reel",   url: "https://f.io/e-VfcycR",    layout: "col-span-12 md:col-span-5", aspect: "aspect-video",  label: "Cinematic" },
   { title: "Motion Showcase",  url: "https://f.io/YM9TbmgQ",    layout: "col-span-12",               aspect: "aspect-[21/7]", label: "Motion" },
+];
+
+
+const AI_FILM_PROJECTS = [
+  {
+    title: "AI Cinematic Short",
+    description: "A cinematic AI-generated story involving a man, horse and dragon.",
+    duration: "~30 seconds",
+    // Add the final hosted MP4 or viewing URL here when available.
+    videoUrl: "",
+    posterUrl: "",
+  },
+  {
+    title: "The Little Mouse",
+    description: "A character-driven AI-generated short story.",
+    duration: "~94 seconds",
+    // Add the final hosted MP4 or viewing URL here when available.
+    videoUrl: "",
+    posterUrl: "",
+  },
+  {
+    title: "AI Product Film — iPod",
+    description: "A cinematic AI-generated product concept.",
+    duration: "~15 seconds",
+    // Add the final hosted MP4 or viewing URL here when available.
+    videoUrl: "",
+    posterUrl: "",
+  },
 ];
 
 const CLIENT_REELS = [
@@ -467,7 +593,46 @@ export default function Home() {
             </div>
           </div>
 
-          <div style={{ backgroundColor: "#111112" }}><SignatureMark /></div>
+
+          {/* AI FILMMAKING */}
+          <div id="ai-filmmaking" style={{ backgroundColor: "#09090B", borderTop: "1px solid rgba(245,245,242,0.04)" }}>
+            <div className="py-32 px-6 max-w-screen-2xl mx-auto">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger} className="mb-16 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20 items-end">
+                <motion.div variants={fadeUp}>
+                  <p className="text-xs uppercase tracking-[0.3em] mb-6 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Stories imagined, directed and crafted with AI.</p>
+                  <h2 className="font-display text-6xl md:text-8xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>
+                    <ScrambleText text="AI" /> <span style={{ color: "#F59E0B", fontStyle: "italic" }}>FILMMAKING</span>
+                  </h2>
+                </motion.div>
+                <motion.div variants={fadeUp} className="space-y-6">
+                  <p className="text-lg md:text-xl font-serif italic leading-relaxed" style={{ color: "rgba(245,245,242,0.78)" }}>
+                    I combine AI-generated visuals with cinematic storytelling, video editing, motion graphics and post-production to create short-form films, visual concepts and branded content.
+                  </p>
+                  <div className="grid grid-cols-3 border" style={{ borderColor: "rgba(245,245,242,0.07)" }}>
+                    {["Story", "Edit", "Post"].map((step) => (
+                      <div key={step} className="px-4 py-3 text-center text-[10px] font-mono uppercase tracking-[0.25em]" style={{ color: "rgba(245,245,242,0.62)", borderRight: step !== "Post" ? "1px solid rgba(245,245,242,0.07)" : "none" }}>
+                        {step}
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              </motion.div>
+
+              <div className="grid grid-cols-12 gap-3">
+                {AI_FILM_PROJECTS.map((project, i) => (
+                  <AiFilmCard
+                    key={project.title}
+                    {...project}
+                    videoUrl={project.videoUrl || undefined}
+                    posterUrl={project.posterUrl || undefined}
+                    delay={i * 0.1}
+                  />
+                ))}
+              </div>
+            </div>
+          </div>
+
+          <div style={{ backgroundColor: "#09090B" }}><SignatureMark /></div>
 
           {/* SOCIAL + DESIGN PORTFOLIO */}
           <div style={{ backgroundColor: "#09090B" }}>
