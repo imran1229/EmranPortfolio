@@ -1,0 +1,42 @@
+name: Update AI film URL
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    if: github.event.head_commit.message != 'Update AI cinematic film URL'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Update URL and remove temporary workflow
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          import re
+
+          path = Path('artifacts/portfolio/src/pages/home.tsx')
+          text = path.read_text()
+          url = 'https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/hf_20260804_141711_aaca1daa-a321-4594-8093-aae1a510d780.mp4'
+          pattern = r'(title: "AI Cinematic Short",[\s\S]*?videoUrl:\s*)""'
+          updated, count = re.subn(pattern, lambda m: m.group(1) + '"' + url + '"', text, count=1)
+          if count != 1:
+              raise SystemExit('Could not find AI Cinematic Short videoUrl placeholder')
+          path.write_text(updated)
+          PY
+          rm .github/workflows/update-ai-film-url.yml
+
+      - name: Commit change
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add artifacts/portfolio/src/pages/home.tsx .github/workflows/update-ai-film-url.yml
+          git commit -m 'Update AI cinematic film URL'
+          git push
