@@ -352,9 +352,22 @@ const MANAGED_PAGES = [
 ];
 
 const SERVICES = [
-  { title: "Graphic Design", desc: "Brand guidelines, color palettes, typography systems built to scale. Marketing assets — social graphics, email templates, landing pages — delivered with precision." },
-  { title: "Video Editing",  desc: "Adobe Premiere Pro, DaVinci Resolve, After Effects. Fast-paced edits and cinematic storytelling — 3–7 business days, up to 2 revision rounds." },
-  { title: "Motion Design",  desc: "Motion graphics powered by AI-assisted workflows. Higgsfield · Heygen · ElevenLabs — bringing brands to life through movement." },
+  {
+    title: "AI Filmmaking",
+    desc: "AI-powered cinematic storytelling — from concept and visual development to generated footage, editing and final film.",
+  },
+  {
+    title: "Post-Production",
+    desc: "Cinematic editing, compositing, sound design and finishing using professional workflows across Premiere Pro, After Effects and DaVinci Resolve.",
+  },
+  {
+    title: "Motion Design",
+    desc: "Motion graphics, visual effects and animated storytelling designed to bring ideas, products and brands to life.",
+  },
+  {
+    title: "Graphic Design",
+    desc: "Brand visuals, social creatives, thumbnails, posters and digital assets built with a strong visual system and attention to detail.",
+  },
 ];
 
 const EXPERIENCE = [
@@ -699,7 +712,7 @@ export default function Home() {
               </div>
               <motion.div
                 initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}
-                className="grid grid-cols-1 md:grid-cols-3"
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4"
                 style={{ borderTop: "1px solid rgba(245,245,242,0.07)" }}
               >
                 {SERVICES.map((s, i) => (
