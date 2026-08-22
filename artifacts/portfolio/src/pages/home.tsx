@@ -163,12 +163,20 @@ function SignatureMark() {
 }
 
 // ─── WORK CARD ────────────────────────────────────────────────────────────────
-function WorkCard({ title, url, label, layout, aspect, delay = 0 }: {
-  title: string; url: string; label: string; layout: string; aspect: string; delay?: number;
+function WorkCard({ title, url, label, layout, aspect, thumbnail, delay = 0 }: {
+  title: string;
+  url: string;
+  label: string;
+  layout: string;
+  aspect: string;
+  thumbnail?: string;
+  delay?: number;
 }) {
   return (
     <motion.a
-      href={url} target="_blank" rel="noopener noreferrer"
+      href={url}
+      target="_blank"
+      rel="noopener noreferrer"
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-30px" }}
@@ -176,6 +184,15 @@ function WorkCard({ title, url, label, layout, aspect, delay = 0 }: {
       className={`group relative ${layout} ${aspect} overflow-hidden border`}
       style={{ backgroundColor: "#0F0F0F", borderColor: "rgba(245,245,242,0.07)" }}
     >
+      {thumbnail && (
+        <img
+          src={thumbnail}
+          alt=""
+          loading="lazy"
+          className="absolute inset-0 h-full w-full object-cover grayscale opacity-60 transition-all duration-700 group-hover:scale-105 group-hover:grayscale-0 group-hover:opacity-85"
+        />
+      )}
+
       <div
         className="absolute inset-0 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out z-10 flex items-center justify-center"
         style={{ backgroundColor: "rgba(245,158,11,0.95)" }}
@@ -184,14 +201,34 @@ function WorkCard({ title, url, label, layout, aspect, delay = 0 }: {
           Watch <ArrowRight size={26} />
         </span>
       </div>
-      <div className="absolute inset-0 z-0 p-6 flex flex-col justify-between">
+
+      <div
+        className="absolute inset-0 z-[1]"
+        style={{
+          background: "linear-gradient(to top, rgba(9,9,11,0.96), rgba(9,9,11,0.15) 55%, rgba(9,9,11,0.35))",
+        }}
+      />
+
+      <div className="absolute inset-0 z-[2] p-6 flex flex-col justify-between">
         <div className="flex justify-between items-start">
-          <Play size={18} style={{ color: "rgba(245,245,242,0.2)" }} />
-          <ExternalLink size={12} style={{ color: "rgba(245,245,242,0.12)" }} />
+          <Play size={18} style={{ color: "rgba(245,245,242,0.55)" }} />
+          <ExternalLink size={12} style={{ color: "rgba(245,245,242,0.4)" }} />
         </div>
+
         <div>
-          <span className="block text-[10px] font-mono uppercase tracking-[0.25em] mb-2" style={{ color: "rgba(245,245,242,0.2)" }}>{label}</span>
-          <h4 className="font-display text-2xl md:text-3xl uppercase font-bold leading-tight" style={{ color: "#F5F5F2" }}>{title}</h4>
+          <span
+            className="block text-[10px] font-mono uppercase tracking-[0.25em] mb-2"
+            style={{ color: "rgba(245,245,242,0.55)" }}
+          >
+            {label}
+          </span>
+
+          <h4
+            className="font-display text-2xl md:text-3xl uppercase font-bold leading-tight"
+            style={{ color: "#F5F5F2" }}
+          >
+            {title}
+          </h4>
         </div>
       </div>
     </motion.a>
@@ -301,9 +338,30 @@ const TICKER_TOP = ["AI Filmmaking", "·", "Visual Storytelling", "·", "Motion 
 const TICKER_BTM = ["Motion Graphics", "·", "Social Content", "·", "Visual Storytelling", "·"];
 
 const FAST_EDITS = [
-  { title: "Fast-Paced Edit", url: "https://f.io/TqsxIJMa", layout: "col-span-12 md:col-span-6", aspect: "aspect-video", label: "Fast Edit" },
-  { title: "Cinematic Reel",  url: "https://f.io/e-VfcycR",  layout: "col-span-12 md:col-span-6", aspect: "aspect-video", label: "Cinematic" },
-  { title: "Motion Showcase", url: "https://f.io/YM9TbmgQ",   layout: "col-span-12", aspect: "aspect-[21/7]", label: "Motion" },
+  {
+    title: "Fast-Paced Edit",
+    url: "https://f.io/TqsxIJMa",
+    layout: "col-span-12 md:col-span-6",
+    aspect: "aspect-video",
+    label: "Fast Edit",
+    thumbnail: "/thumbnails/fast-paced-edit.png",
+  },
+  {
+    title: "SaaS Explainer",
+    url: "https://drive.google.com/file/d/14sgo_39EWJQ3cdK_uKy7ssaTIJBdIxCa/view?usp=sharing",
+    layout: "col-span-12 md:col-span-6",
+    aspect: "aspect-video",
+    label: "Saas Explainer",
+    thumbnail: "/thumbnails/saas-explainer.png",
+  },
+  {
+    title: "Motion Showcase",
+    url: "https://f.io/YM9TbmgQ",
+    layout: "col-span-12",
+    aspect: "aspect-[21/7]",
+    label: "Motion",
+    thumbnail: "/thumbnails/motion-showcase.png",
+  },
 ];
 
 
@@ -335,12 +393,54 @@ const AI_FILM_PROJECTS = [
 ];
 
 const CLIENT_REELS = [
-  { title: "Client Reel 01", url: "https://www.instagram.com/reel/DNigZ7lTHxQ/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Client Reel 02", url: "https://www.instagram.com/reel/DNqe1ACzxWP/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Client Reel 03", url: "https://www.instagram.com/reel/DOGdOauk02J/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Client Reel 04", url: "https://www.instagram.com/reel/DObHT0aE_oQ/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Throwback Edit",  url: "https://www.instagram.com/reel/CgE20YQI6gO/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Creative Cut",    url: "https://www.instagram.com/reel/DDW5lgpzMUm/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
+  {
+    title: "Kodaikanal Travel Reel",
+    url: "https://www.instagram.com/reel/DNigZ7lTHxQ/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Travel Reel",
+    thumbnail: "/thumbnails/kodaikanal-travel-reel.png",
+  },
+  {
+    title: "Mountain Escape",
+    url: "https://www.instagram.com/reel/DNqe1ACzxWP/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Travel Reel",
+    thumbnail: "/thumbnails/mountain-escape.png",
+  },
+  {
+    title: "Coorg Travel Story",
+    url: "https://www.instagram.com/reel/DOGdOauk02J/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Travel Reel",
+    thumbnail: "/thumbnails/coorg-travel-story.png",
+  },
+  {
+    title: "Waterfall Adventure",
+    url: "https://www.instagram.com/reel/DObHT0aE_oQ/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Travel Reel",
+    thumbnail: "/thumbnails/waterfall-adventure.png",
+  },
+  {
+    title: "Throwback Edit",
+    url: "https://www.instagram.com/reel/CgE20YQI6gO/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Freelance Reel",
+    thumbnail: "/thumbnails/throwback-edit.png",
+  },
+  {
+    title: "Off-Road Event Film",
+    url: "https://www.instagram.com/reel/DDW5lgpzMUm/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Event Film",
+    thumbnail: "/thumbnails/off-road-event-film.png",
+  },
 ];
 
 const MANAGED_PAGES = [
