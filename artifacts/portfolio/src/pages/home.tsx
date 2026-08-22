@@ -301,9 +301,9 @@ const TICKER_TOP = ["AI Filmmaking", "·", "Visual Storytelling", "·", "Motion 
 const TICKER_BTM = ["Motion Graphics", "·", "Social Content", "·", "Visual Storytelling", "·"];
 
 const FAST_EDITS = [
-  { title: "Fast-Paced Edit",  url: "https://f.io/TqsxIJMa",    layout: "col-span-12 md:col-span-7", aspect: "aspect-video",  label: "Fast Edit" },
-  { title: "Cinematic Reel",   url: "https://f.io/e-VfcycR",    layout: "col-span-12 md:col-span-5", aspect: "aspect-video",  label: "Cinematic" },
-  { title: "Motion Showcase",  url: "https://f.io/YM9TbmgQ",    layout: "col-span-12",               aspect: "aspect-[21/7]", label: "Motion" },
+  { title: "Fast-Paced Edit", url: "https://f.io/TqsxIJMa", layout: "col-span-12 md:col-span-6", aspect: "aspect-video", label: "Fast Edit" },
+  { title: "Cinematic Reel",  url: "https://f.io/e-VfcycR",  layout: "col-span-12 md:col-span-6", aspect: "aspect-video", label: "Cinematic" },
+  { title: "Motion Showcase", url: "https://f.io/YM9TbmgQ",   layout: "col-span-12", aspect: "aspect-[21/7]", label: "Motion" },
 ];
 
 
@@ -335,12 +335,12 @@ const AI_FILM_PROJECTS = [
 ];
 
 const CLIENT_REELS = [
-  { title: "Client Reel 01", url: "https://www.instagram.com/reel/DNigZ7lTHxQ/", layout: "col-span-12 md:col-span-5", aspect: "aspect-[3/4]",  label: "Instagram Reel" },
-  { title: "Client Reel 02", url: "https://www.instagram.com/reel/DNqe1ACzxWP/", layout: "col-span-12 md:col-span-7", aspect: "aspect-video",  label: "Instagram Reel" },
+  { title: "Client Reel 01", url: "https://www.instagram.com/reel/DNigZ7lTHxQ/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
+  { title: "Client Reel 02", url: "https://www.instagram.com/reel/DNqe1ACzxWP/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
   { title: "Client Reel 03", url: "https://www.instagram.com/reel/DOGdOauk02J/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
   { title: "Client Reel 04", url: "https://www.instagram.com/reel/DObHT0aE_oQ/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
   { title: "Throwback Edit",  url: "https://www.instagram.com/reel/CgE20YQI6gO/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
-  { title: "Creative Cut",    url: "https://www.instagram.com/reel/DDW5lgpzMUm/", layout: "col-span-12",               aspect: "aspect-[21/7]", label: "Instagram Reel" },
+  { title: "Creative Cut",    url: "https://www.instagram.com/reel/DDW5lgpzMUm/", layout: "col-span-12 md:col-span-4", aspect: "aspect-square", label: "Instagram Reel" },
 ];
 
 const MANAGED_PAGES = [
