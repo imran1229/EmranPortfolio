@@ -1,22 +1,28 @@
 name: Fix AI film player
 
 on:
-  push:
-    branches: [main]
+  pull_request:
+    types: [opened, synchronize, reopened]
 
 permissions:
   contents: write
 
 jobs:
   fix:
-    if: "!startsWith(github.event.head_commit.message, 'fix: AI film poster and player')"
+    if: github.event.pull_request.base.ref == 'main'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout PR branch
         uses: actions/checkout@v4
-      - name: Patch AI filmmaking card
+        with:
+          fetch-depth: 0
+
+      - name: Patch main and push
         shell: bash
         run: |
+          git fetch origin main
+          git checkout main
+          git reset --hard origin/main
           python - <<'PY'
           from pathlib import Path
           path = Path('artifacts/portfolio/src/pages/home.tsx')
@@ -29,60 +35,87 @@ function AiFilmCard({ title, description, duration, videoUrl, posterUrl, delay =
 }) {
   const [open, setOpen] = useState(false);
   const isReady = Boolean(videoUrl);
+
   useEffect(() => {
     if (!open) return;
     const onKeyDown = (event: KeyboardEvent) => { if (event.key === 'Escape') setOpen(false); };
     document.addEventListener('keydown', onKeyDown);
     return () => document.removeEventListener('keydown', onKeyDown);
   }, [open]);
+
   const posterBackground = posterUrl
     ? `linear-gradient(to top, rgba(9,9,11,0.96), rgba(9,9,11,0.16) 58%, rgba(9,9,11,0.42)), url("${posterUrl}")`
     : 'radial-gradient(circle at 26% 24%, rgba(245,158,11,0.28), transparent 30%), radial-gradient(circle at 78% 18%, rgba(245,245,242,0.12), transparent 24%), linear-gradient(135deg, #151515 0%, #09090B 54%, #1A1206 100%)';
+
   const cardContent = (
     <>
       <div className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat transition-transform duration-700 group-hover:scale-105" style={{ backgroundImage: posterBackground }} aria-hidden="true" />
       <div className="absolute inset-x-0 top-0 z-[1] h-px opacity-50" style={{ background: "linear-gradient(to right, transparent, rgba(245,158,11,0.8), transparent)" }} />
+
       <div className="absolute inset-0 z-20 translate-y-[101%] group-hover:translate-y-0 transition-transform duration-500 ease-out flex items-center justify-center" style={{ backgroundColor: isReady ? "rgba(245,158,11,0.95)" : "rgba(245,245,242,0.92)" }}>
-        <span className="font-display text-2xl md:text-3xl uppercase font-bold text-black flex items-center gap-3 text-center px-6">{isReady ? "Watch Film" : "Video Coming Soon"} {isReady ? <ArrowRight size={26} /> : <Film size={24} />}</span>
+        <span className="font-display text-2xl md:text-3xl uppercase font-bold text-black flex items-center gap-3 text-center px-6">
+          {isReady ? "Watch Film" : "Video Coming Soon"} {isReady ? <ArrowRight size={26} /> : <Film size={24} />}
+        </span>
       </div>
+
       <div className="relative z-10 flex h-full flex-col justify-between p-5 md:p-6">
         <div className="flex items-start justify-between gap-4">
-          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.25em]" style={{ color: "rgba(245,245,242,0.78)" }}><Sparkles size={14} style={{ color: "#F59E0B" }} />AI Film</div>
+          <div className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-[0.25em]" style={{ color: "rgba(245,245,242,0.78)" }}>
+            <Sparkles size={14} style={{ color: "#F59E0B" }} /> AI Film
+          </div>
           <span className="border px-2 py-1 text-[10px] font-mono uppercase tracking-[0.18em]" style={{ borderColor: "rgba(245,245,242,0.2)", color: "rgba(245,245,242,0.78)" }}>{duration}</span>
         </div>
+
         <div>
-          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border transition-transform duration-500 group-hover:scale-110" style={{ borderColor: "rgba(245,245,242,0.35)", backgroundColor: "rgba(0,0,0,0.3)" }}><Play size={20} fill="rgba(245,245,242,0.95)" style={{ color: "rgba(245,245,242,0.95)", marginLeft: 2 }} /></div>
+          <div className="mb-5 flex h-14 w-14 items-center justify-center rounded-full border transition-transform duration-500 group-hover:scale-110" style={{ borderColor: "rgba(245,245,242,0.35)", backgroundColor: "rgba(0,0,0,0.3)" }}>
+            <Play size={20} fill="rgba(245,245,242,0.95)" style={{ color: "rgba(245,245,242,0.95)", marginLeft: 2 }} />
+          </div>
           <h4 className="font-display text-3xl md:text-4xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>{title}</h4>
           <p className="mt-4 max-w-md text-sm leading-relaxed" style={{ color: "rgba(245,245,242,0.82)" }}>{description}</p>
         </div>
       </div>
     </>
   );
+
   const sharedClassName = "group relative col-span-12 min-h-[420px] overflow-hidden border text-left md:col-span-4";
   const sharedStyle = { backgroundColor: "#0F0F0F", borderColor: "rgba(245,245,242,0.07)" };
-  if (isReady) return (
-    <>
-      <motion.button type="button" onClick={() => setOpen(true)} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }} className={sharedClassName} style={sharedStyle} aria-label={`Watch ${title}`}>{cardContent}</motion.button>
-      <AnimatePresence>{open && <motion.div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
-        <motion.div className="relative w-full max-w-6xl overflow-hidden border bg-black" initial={{ scale: 0.96, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 20 }} transition={{ duration: 0.25 }} style={{ borderColor: "rgba(245,245,242,0.16)" }}>
-          <button type="button" onClick={() => setOpen(false)} className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-black/70 text-white" aria-label="Close video"><X size={20} /></button>
-          <video src={videoUrl} poster={posterUrl} controls autoPlay playsInline preload="metadata" className="block max-h-[82vh] w-full bg-black object-contain" />
-        </motion.div>
-      </motion.div>}</AnimatePresence>
-    </>
+
+  if (isReady) {
+    return (
+      <>
+        <motion.button type="button" onClick={() => setOpen(true)} initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }} className={sharedClassName} style={sharedStyle} aria-label={`Watch ${title}`}>
+          {cardContent}
+        </motion.button>
+
+        <AnimatePresence>
+          {open && (
+            <motion.div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-10" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onMouseDown={(event) => { if (event.target === event.currentTarget) setOpen(false); }}>
+              <motion.div className="relative w-full max-w-6xl overflow-hidden border bg-black" initial={{ scale: 0.96, y: 20 }} animate={{ scale: 1, y: 0 }} exit={{ scale: 0.96, y: 20 }} transition={{ duration: 0.25 }} style={{ borderColor: "rgba(245,245,242,0.16)" }}>
+                <button type="button" onClick={() => setOpen(false)} className="absolute right-3 top-3 z-20 flex h-10 w-10 items-center justify-center rounded-full border bg-black/70 text-white" aria-label="Close video"><X size={20} /></button>
+                <video src={videoUrl} poster={posterUrl} controls autoPlay playsInline preload="metadata" className="block max-h-[82vh] w-full bg-black object-contain" />
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </>
+    );
+  }
+
+  return (
+    <motion.article initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }} className={sharedClassName} style={sharedStyle} aria-label={`${title} video placeholder`}>
+      {cardContent}
+    </motion.article>
   );
-  return <motion.article initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true, margin: "-30px" }} transition={{ duration: 0.7, delay, ease: [0.16, 1, 0.3, 1] }} className={sharedClassName} style={sharedStyle} aria-label={`${title} video placeholder`}>{cardContent}</motion.article>;
 }
 
 '''
           path.write_text(text[:start] + replacement + text[end:])
           PY
-          grep -q 'https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/frame6.jpg' artifacts/portfolio/src/pages/home.tsx
+          grep -q 'frame6.jpg' artifacts/portfolio/src/pages/home.tsx
           grep -q '<video' artifacts/portfolio/src/pages/home.tsx
           git diff --check
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git rm .github/workflows/fix-ai-film-player.yml
           git add artifacts/portfolio/src/pages/home.tsx
           git commit -m 'fix: AI film poster and player'
-          git push
+          git push origin main
