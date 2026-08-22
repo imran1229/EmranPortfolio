@@ -891,7 +891,7 @@ export default function Home() {
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger}>
                 <motion.h2
                   variants={fadeUp}
-                  className="font-display font-black uppercase tracking-tighter leading-none mb-16"
+                  className="font-display font-black uppercase tracking-normal leading-none mb-16"
                   style={{ fontSize: "clamp(3rem, 10vw, 9rem)", color: "#F5F5F2" }}
                 >
                   Let's build<br />something.
