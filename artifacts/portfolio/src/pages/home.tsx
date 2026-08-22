@@ -598,7 +598,7 @@ export default function Home() {
                 transition={{ duration: 1.15, delay: 1.0 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
               >
                 <img
-                  src="/imran-photo.jpg"
+                  src="/profile.jpg"
                   alt=""
                   aria-hidden="true"
                   className="absolute left-0 w-full"
