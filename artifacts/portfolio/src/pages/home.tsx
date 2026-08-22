@@ -598,18 +598,15 @@ export default function Home() {
                 transition={{ duration: 1.15, delay: 1.0 + i * 0.09, ease: [0.16, 1, 0.3, 1] }}
               >
                 <img
-                  src="/profile.jpg"
-                  alt=""
-                  aria-hidden="true"
-                  className="absolute left-0 w-full"
-                  style={{
-                    height: "500%",
-                    top: `-${i * 100}%`,
-                    objectFit: "cover",
-                    objectPosition: "center 5%",
-                    filter: "grayscale(100%) contrast(1.18) brightness(0.62)",
-                  }}
-                />
+                 src="/profile.jpg"
+                 alt=""
+                 aria-hidden="true"
+                 className="absolute left-0 w-full object-cover object-[center_25%] md:object-[center_30%]"
+                 style={{
+                   height: "500%",
+                   top: `-${i * 100}%`,
+                 }}
+               />
               </motion.div>
             ))}
           </motion.div>
