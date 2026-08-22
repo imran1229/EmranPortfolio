@@ -329,8 +329,8 @@ const AI_FILM_PROJECTS = [
     description: "A cinematic AI-generated product concept.",
     duration: "~15 seconds",
     // Add the final hosted MP4 or viewing URL here when available.
-    videoUrl: "",
-    posterUrl: "",
+    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
+    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
   },
 ];
 
