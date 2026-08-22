@@ -571,7 +571,15 @@ export default function Home() {
 
         {/* ── ALL SECTIONS — z-10, slide over the sticky hero ─────────────── */}
         <div style={{ position: "relative", zIndex: 10 }}>
-          
+
+          {/* TICKER */}
+          <div style={{ backgroundColor: "#0D0D0D", borderTop: "1px solid rgba(245,245,242,0.04)", borderBottom: "1px solid rgba(245,245,242,0.04)" }}>
+            <div className="py-5 overflow-hidden">
+              <MarqueeRow items={TICKER_TOP} />
+              <div className="mt-2"><MarqueeRow items={TICKER_BTM} reverse /></div>
+            </div>
+          </div>
+
           {/* AI FILMMAKING */}
           <div id="ai-filmmaking" style={{ backgroundColor: "#09090B", borderTop: "1px solid rgba(245,245,242,0.04)" }}>
             <div className="py-32 px-6 max-w-screen-2xl mx-auto">
@@ -607,14 +615,6 @@ export default function Home() {
                   />
                 ))}
               </div>
-            </div>
-          </div>
-
-          {/* TICKER */}
-          <div style={{ backgroundColor: "#0D0D0D", borderTop: "1px solid rgba(245,245,242,0.04)", borderBottom: "1px solid rgba(245,245,242,0.04)" }}>
-            <div className="py-5 overflow-hidden">
-              <MarqueeRow items={TICKER_TOP} />
-              <div className="mt-2"><MarqueeRow items={TICKER_BTM} reverse /></div>
             </div>
           </div>
 
