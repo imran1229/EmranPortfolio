@@ -542,7 +542,7 @@ export default function Home() {
               className="mt-10 flex flex-col gap-6"
             >
               <p className="font-serif italic text-lg md:text-xl tracking-wide" style={{ color: "rgba(245,245,242,0.82)" }}>
-                Graphic Design · Video Editing · Motion Design
+                AI Filmmaking · Visual Storytelling · Motion Design
               </p>
               <a
                 href="#work"
