@@ -321,8 +321,8 @@ const AI_FILM_PROJECTS = [
     description: "A character-driven AI-generated short story.",
     duration: "~94 seconds",
     // Add the final hosted MP4 or viewing URL here when available.
-    videoUrl: "",
-    posterUrl: "",
+    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Littele%20Mouse%20AI%20GEN.mp4",
+    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/little-mouse-thumbnail.jpg",
   },
   {
     title: "AI Product Film — iPod",
