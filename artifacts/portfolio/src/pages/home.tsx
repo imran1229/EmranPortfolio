@@ -371,9 +371,9 @@ const SERVICES = [
 ];
 
 const EXPERIENCE = [
-  { role: "Video Editor",        org: "Growth School",         current: true,  duration: "Current",  detail: "Creating high-impact educational content for a leading online learning platform." },
+  { role: "AI Video Editor",        org: "Growth School",         current: true,  duration: "Current",  detail: "Creating high-impact educational content for a leading online learning platform." },
   { role: "Content Creator",     org: "Tripziii",              current: false, duration: "3 Months", detail: "Produced travel & lifestyle content driving engagement across social platforms." },
-  { role: "Social Media Manager",org: "College & Independent", current: false, duration: "Ongoing",  detail: "Managed & edited videos for 5+ Instagram pages, growing reach and brand identity." },
+  { role: "Social Media Manager",org: "College & Independent", current: false, duration: "2022 – Sep 2025",  detail: "Managed & edited videos for 5+ Instagram pages, growing reach and brand identity." },
 ];
 
 const NAV_LINKS = [
