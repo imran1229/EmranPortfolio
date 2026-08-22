@@ -571,42 +571,7 @@ export default function Home() {
 
         {/* ── ALL SECTIONS — z-10, slide over the sticky hero ─────────────── */}
         <div style={{ position: "relative", zIndex: 10 }}>
-
-          {/* TICKER */}
-          <div style={{ backgroundColor: "#0D0D0D", borderTop: "1px solid rgba(245,245,242,0.04)", borderBottom: "1px solid rgba(245,245,242,0.04)" }}>
-            <div className="py-5 overflow-hidden">
-              <MarqueeRow items={TICKER_TOP} />
-              <div className="mt-2"><MarqueeRow items={TICKER_BTM} reverse /></div>
-            </div>
-          </div>
-
-          {/* SELECTED WORK — AMBER 1/3 */}
-          <div id="work" style={{ backgroundColor: "#111112" }}>
-            <div className="py-32 px-6 max-w-screen-2xl mx-auto">
-              <div className="mb-16">
-                <h2 className="font-display text-6xl md:text-8xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>
-                  <ScrambleText text="SELECTED" />{" "}
-                  <span style={{ color: "#F59E0B", fontStyle: "italic" }}>WORK</span>
-                </h2>
-              </div>
-
-              <div className="mb-16">
-                <p className="text-xs uppercase tracking-[0.3em] mb-8 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Fast-Paced Edits</p>
-                <div className="grid grid-cols-12 gap-3">
-                  {FAST_EDITS.map((v, i) => <WorkCard key={i} {...v} delay={i * 0.1} />)}
-                </div>
-              </div>
-
-              <div>
-                <p className="text-xs uppercase tracking-[0.3em] mb-8 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Freelance Client Work</p>
-                <div className="grid grid-cols-12 gap-3">
-                  {CLIENT_REELS.map((r, i) => <WorkCard key={i} {...r} delay={(i % 3) * 0.1} />)}
-                </div>
-              </div>
-            </div>
-          </div>
-
-
+          
           {/* AI FILMMAKING */}
           <div id="ai-filmmaking" style={{ backgroundColor: "#09090B", borderTop: "1px solid rgba(245,245,242,0.04)" }}>
             <div className="py-32 px-6 max-w-screen-2xl mx-auto">
@@ -641,6 +606,40 @@ export default function Home() {
                     delay={i * 0.1}
                   />
                 ))}
+              </div>
+            </div>
+          </div>
+
+          {/* TICKER */}
+          <div style={{ backgroundColor: "#0D0D0D", borderTop: "1px solid rgba(245,245,242,0.04)", borderBottom: "1px solid rgba(245,245,242,0.04)" }}>
+            <div className="py-5 overflow-hidden">
+              <MarqueeRow items={TICKER_TOP} />
+              <div className="mt-2"><MarqueeRow items={TICKER_BTM} reverse /></div>
+            </div>
+          </div>
+
+          {/* SELECTED WORK — AMBER 1/3 */}
+          <div id="work" style={{ backgroundColor: "#111112" }}>
+            <div className="py-32 px-6 max-w-screen-2xl mx-auto">
+              <div className="mb-16">
+                <h2 className="font-display text-6xl md:text-8xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>
+                  <ScrambleText text="SELECTED" />{" "}
+                  <span style={{ color: "#F59E0B", fontStyle: "italic" }}>WORK</span>
+                </h2>
+              </div>
+
+              <div className="mb-16">
+                <p className="text-xs uppercase tracking-[0.3em] mb-8 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Fast-Paced Edits</p>
+                <div className="grid grid-cols-12 gap-3">
+                  {FAST_EDITS.map((v, i) => <WorkCard key={i} {...v} delay={i * 0.1} />)}
+                </div>
+              </div>
+
+              <div>
+                <p className="text-xs uppercase tracking-[0.3em] mb-8 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Freelance Client Work</p>
+                <div className="grid grid-cols-12 gap-3">
+                  {CLIENT_REELS.map((r, i) => <WorkCard key={i} {...r} delay={(i % 3) * 0.1} />)}
+                </div>
               </div>
             </div>
           </div>
