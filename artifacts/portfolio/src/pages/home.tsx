@@ -851,7 +851,7 @@ export default function Home() {
             <div className="py-32 px-6 max-w-screen-2xl mx-auto">
               <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={fadeUp} className="mb-20">
                 <h2 className="font-display text-6xl md:text-8xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>
-                  <ScrambleText text="THE EDITOR" />
+                  <ScrambleText text="AI FILMMAKER" />
                 </h2>
                 <div className="mt-10 max-w-3xl space-y-4 text-xl md:text-2xl font-light leading-relaxed font-serif italic" style={{ color: "rgba(245,245,242,0.7)" }}>
                   <p>B.Tech CSE 2025 graduate. Currently crafting narratives at Growth School.</p>
