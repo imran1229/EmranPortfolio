@@ -390,6 +390,13 @@ const AI_FILM_PROJECTS = [
     videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
     posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
   },
+  {
+  title: "AI Dragon Film",
+  description: "Cinematic AI filmmaking project combining generative visuals, storytelling, and post-production.",
+  duration: "AI FILM",
+  videoUrl: "https://drive.google.com/file/d/1NrZw2NzVD_IYEAigXskSBj44Wo497N-I/view?usp=sharing",
+  posterUrl: "/thumbnails/ai-filmmaking-thumbnail-clear.jpg",
+  },
 ];
 
 const CLIENT_REELS = [
