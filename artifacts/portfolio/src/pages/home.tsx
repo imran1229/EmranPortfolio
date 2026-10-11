@@ -334,8 +334,8 @@ function AiFilmCard({ title, description, duration, videoUrl, posterUrl, delay =
 }
 
 // ─── MAIN ─────────────────────────────────────────────────────────────────────
-const TICKER_TOP = ["AI Filmmaking", "·", "Visual Storytelling", "·", "Motion Design", "·"];
-const TICKER_BTM = ["Motion Graphics", "·", "Social Content", "·", "Visual Storytelling", "·"];
+const TICKER_TOP = ["AI Filmmaking", "·", "AI Ads", "·", "Visual Storytelling", "·", "Motion Design", "·"];
+const TICKER_BTM = ["AI Ad Creatives", "·", "Motion Graphics", "·", "Social Content", "·", "Visual Storytelling", "·"];
 
 const FAST_EDITS = [
   {
