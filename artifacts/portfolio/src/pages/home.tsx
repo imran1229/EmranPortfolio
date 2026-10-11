@@ -371,18 +371,21 @@ const AI_AD_PROJECTS = [
     description: "A punchy, AI-generated product ad built around an energy drink.",
     duration: "12 seconds",
     videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791713982/hf_20260919_151929_781f6b97-007d-4b85-858a-e4214216bf91.mp4",
+    posterUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/so_1/v1791713982/hf_20260919_151929_781f6b97-007d-4b85-858a-e4214216bf91.jpg",
   },
   {
     title: "Spa Promo",
     description: "A short, polished promotional film for a spa and wellness experience.",
     duration: "10 seconds",
     videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791713966/hf_20260912_134948_49d8ea3b-8260-4dcb-a587-1e4197cb7940.mp4",
+    posterUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/so_1/v1791713966/hf_20260912_134948_49d8ea3b-8260-4dcb-a587-1e4197cb7940.jpg",
   },
   {
     title: "Live150 Fitness Promo",
     description: "A vertical promotional video for Live150, a holistic wellness app.",
     duration: "30 seconds",
     videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791714000/hf_20260919_213205_f76282f3-34b8-4538-acec-bdfac1d29449.mp4",
+    posterUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/so_1/v1791714000/hf_20260919_213205_f76282f3-34b8-4538-acec-bdfac1d29449.jpg",
   },
 ];
 
