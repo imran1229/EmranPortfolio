@@ -367,6 +367,14 @@ const FAST_EDITS = [
 
 const AI_FILM_PROJECTS = [
   {
+    title: "AI Product Film — iPod",
+    description: "A cinematic AI-generated product concept.",
+    duration: "~15 seconds",
+    // Add the final hosted MP4 or viewing URL here when available.
+    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
+    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
+  },
+  {
     title: "AI Cinematic Short",
     description: "A cinematic AI-generated story involving a man, horse and dragon.",
     duration: "~30 seconds",
@@ -383,19 +391,11 @@ const AI_FILM_PROJECTS = [
     posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/little-mouse-thumbnail.jpg",
   },
   {
-    title: "AI Product Film — iPod",
-    description: "A cinematic AI-generated product concept.",
-    duration: "~15 seconds",
-    // Add the final hosted MP4 or viewing URL here when available.
-    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
-    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
-  },
-  {
-  title: "AI Dragon Film",
-  description: "Cinematic AI filmmaking project combining generative visuals, storytelling, and post-production.",
-  duration: "AI FILM",
-  videoUrl: "https://drive.google.com/file/d/1NrZw2NzVD_IYEAigXskSBj44Wo497N-I/view?usp=sharing",
-  posterUrl: "/thumbnails/ai-filmmaking-thumbnail-clear.jpg",
+    title: "AI Dragon Film",
+    description: "Cinematic AI filmmaking project combining generative visuals, storytelling, and post-production.",
+    duration: "AI FILM",
+    videoUrl: "https://drive.google.com/file/d/1NrZw2NzVD_IYEAigXskSBj44Wo497N-I/view?usp=sharing",
+    posterUrl: "/thumbnails/ai-filmmaking-thumbnail-clear.jpg",
   },
 ];
 
