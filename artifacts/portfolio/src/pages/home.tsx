@@ -660,6 +660,9 @@ export default function Home() {
             >
               <p className="font-serif italic text-lg md:text-xl tracking-wide" style={{ color: "rgba(245,245,242,0.82)" }}>
                 AI Video Creator · Ad Creative · Visual Storytelling
+              </p> 
+              <p className="max-w-xl text-sm md:text-base leading-relaxed" style={{ color: "rgba(245,245,242,0.72)" }}>
+                I create cinematic AI videos, product visuals, and short-form ad creatives using AI generation, motion design, and professional post-production.
               </p>
               <a
                 href="#work"
