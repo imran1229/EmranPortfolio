@@ -365,7 +365,36 @@ const FAST_EDITS = [
 ];
 
 
+const AI_AD_PROJECTS = [
+  {
+    title: "Energy Drink Product Ad",
+    description: "A punchy, AI-generated product ad built around an energy drink.",
+    duration: "12 seconds",
+    videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791713982/hf_20260919_151929_781f6b97-007d-4b85-858a-e4214216bf91.mp4",
+  },
+  {
+    title: "Spa Promo",
+    description: "A short, polished promotional film for a spa and wellness experience.",
+    duration: "10 seconds",
+    videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791713966/hf_20260912_134948_49d8ea3b-8260-4dcb-a587-1e4197cb7940.mp4",
+  },
+  {
+    title: "Live150 Fitness Promo",
+    description: "A vertical promotional video for Live150, a holistic wellness app.",
+    duration: "30 seconds",
+    videoUrl: "https://res.cloudinary.com/cdu44s6j/video/upload/v1791714000/hf_20260919_213205_f76282f3-34b8-4538-acec-bdfac1d29449.mp4",
+  },
+];
+
 const AI_FILM_PROJECTS = [
+  {
+    title: "AI Product Film — iPod",
+    description: "A cinematic AI-generated product concept.",
+    duration: "~15 seconds",
+    // Add the final hosted MP4 or viewing URL here when available.
+    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
+    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
+  },
   {
     title: "AI Cinematic Short",
     description: "A cinematic AI-generated story involving a man, horse and dragon.",
@@ -383,19 +412,11 @@ const AI_FILM_PROJECTS = [
     posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/little-mouse-thumbnail.jpg",
   },
   {
-    title: "AI Product Film — iPod",
-    description: "A cinematic AI-generated product concept.",
-    duration: "~15 seconds",
-    // Add the final hosted MP4 or viewing URL here when available.
-    videoUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/Vintage%20Short%20Film%20AI%20GEN.mp4",
-    posterUrl: "https://r36oc3nmtvnwcata.public.blob.vercel-storage.com/ipod-film-thumbnail.jpg",
-  },
-  {
-  title: "AI Dragon Film",
-  description: "Cinematic AI filmmaking project combining generative visuals, storytelling, and post-production.",
-  duration: "AI FILM",
-  videoUrl: "https://drive.google.com/file/d/1NrZw2NzVD_IYEAigXskSBj44Wo497N-I/view?usp=sharing",
-  posterUrl: "/thumbnails/ai-filmmaking-thumbnail-clear.jpg",
+    title: "AI Dragon Film",
+    description: "Cinematic AI filmmaking project combining generative visuals, storytelling, and post-production.",
+    duration: "AI FILM",
+    videoUrl: "https://drive.google.com/file/d/1NrZw2NzVD_IYEAigXskSBj44Wo497N-I/view?usp=sharing",
+    posterUrl: "/thumbnails/ai-filmmaking-thumbnail-clear.jpg",
   },
 ];
 
@@ -684,6 +705,37 @@ export default function Home() {
             <div className="py-5 overflow-hidden">
               <MarqueeRow items={TICKER_TOP} />
               <div className="mt-2"><MarqueeRow items={TICKER_BTM} reverse /></div>
+            </div>
+          </div>
+
+          {/* AI ADVERTISING & PRODUCT FILMS */}
+          <div id="ai-advertising" style={{ backgroundColor: "#111112", borderTop: "1px solid rgba(245,245,242,0.04)" }}>
+            <div className="py-32 px-6 max-w-screen-2xl mx-auto">
+              <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: "-80px" }} variants={stagger} className="mb-16 grid grid-cols-1 lg:grid-cols-[0.9fr_1.1fr] gap-10 lg:gap-20 items-end">
+                <motion.div variants={fadeUp}>
+                  <p className="text-xs uppercase tracking-[0.3em] mb-6 font-medium" style={{ color: "rgba(245,245,242,0.7)" }}>Product storytelling, built for the scroll.</p>
+                  <h2 className="font-display text-5xl md:text-7xl uppercase font-bold leading-none" style={{ color: "#F5F5F2" }}>
+                    <ScrambleText text="AI" /> <span style={{ color: "#F59E0B", fontStyle: "italic" }}>ADVERTISING</span>
+                  </h2>
+                </motion.div>
+                <motion.div variants={fadeUp} className="space-y-6">
+                  <p className="text-lg md:text-xl font-serif italic leading-relaxed" style={{ color: "rgba(245,245,242,0.78)" }}>
+                    Short-form product and brand promos combining AI-generated visuals, visual direction, editing and post-production.
+                  </p>
+                </motion.div>
+              </motion.div>
+
+              <div className="grid grid-cols-12 gap-3">
+                {AI_AD_PROJECTS.map((project, i) => (
+                  <AiFilmCard
+                    key={project.title}
+                    {...project}
+                    videoUrl={project.videoUrl || undefined}
+                    posterUrl={project.posterUrl || undefined}
+                    delay={i * 0.1}
+                  />
+                ))}
+              </div>
             </div>
           </div>
 
