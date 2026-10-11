@@ -484,20 +484,20 @@ const MANAGED_PAGES = [
 
 const SERVICES = [
   {
-    title: "AI Filmmaking",
-    desc: "AI-powered cinematic storytelling — from concept and visual development to generated footage, editing and final film.",
+    title: "AI Ad Creatives",
+    desc: "Scroll-stopping product and brand videos built with AI-generated visuals, clear creative direction and platform-first storytelling.",
   },
   {
-    title: "Post-Production",
-    desc: "Cinematic editing, compositing, sound design and finishing using professional workflows across Premiere Pro, After Effects and DaVinci Resolve.",
+    title: "AI Filmmaking",
+    desc: "Cinematic AI stories developed from concept and shot planning through generated footage, visual consistency and final edit.",
+  },
+  {
+    title: "Video Editing",
+    desc: "Sharp pacing, story-driven cuts, compositing, sound design and polished delivery using Premiere Pro, After Effects and DaVinci Resolve.",
   },
   {
     title: "Motion Design",
-    desc: "Motion graphics, visual effects and animated storytelling designed to bring ideas, products and brands to life.",
-  },
-  {
-    title: "Graphic Design",
-    desc: "Brand visuals, social creatives, thumbnails, posters and digital assets built with a strong visual system and attention to detail.",
+    desc: "Motion graphics, visual effects and animated product storytelling that make ideas easier to understand and brands more memorable.",
   },
 ];
 
