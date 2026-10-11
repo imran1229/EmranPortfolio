@@ -401,6 +401,22 @@ const AI_FILM_PROJECTS = [
 
 const CLIENT_REELS = [
   {
+    title: "Off-Road Event Film",
+    url: "https://www.instagram.com/reel/DDW5lgpzMUm/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Event Film",
+    thumbnail: "/thumbnails/off-road-event-film.png",
+  },
+  {
+    title: "Throwback Edit",
+    url: "https://www.instagram.com/reel/CgE20YQI6gO/",
+    layout: "col-span-12 md:col-span-4",
+    aspect: "aspect-square",
+    label: "Freelance Reel",
+    thumbnail: "/thumbnails/throwback-edit.png",
+  },
+  {
     title: "Kodaikanal Travel Reel",
     url: "https://www.instagram.com/reel/DNigZ7lTHxQ/",
     layout: "col-span-12 md:col-span-4",
@@ -431,22 +447,6 @@ const CLIENT_REELS = [
     aspect: "aspect-square",
     label: "Travel Reel",
     thumbnail: "/thumbnails/waterfall-adventure.png",
-  },
-  {
-    title: "Throwback Edit",
-    url: "https://www.instagram.com/reel/CgE20YQI6gO/",
-    layout: "col-span-12 md:col-span-4",
-    aspect: "aspect-square",
-    label: "Freelance Reel",
-    thumbnail: "/thumbnails/throwback-edit.png",
-  },
-  {
-    title: "Off-Road Event Film",
-    url: "https://www.instagram.com/reel/DDW5lgpzMUm/",
-    layout: "col-span-12 md:col-span-4",
-    aspect: "aspect-square",
-    label: "Event Film",
-    thumbnail: "/thumbnails/off-road-event-film.png",
   },
 ];
 
